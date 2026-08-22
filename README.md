@@ -73,16 +73,16 @@ index.html              the whole page
 assets/css/styles.css   design system + layout
 assets/js/config.js     trip settings  ← edit this
 assets/js/main.js       countdown, parallax, reveals, .ics download
-assets/img/*.svg        hero layers and the six postcard scenes
+assets/img/hero-*.svg   the three parallax layers behind the countdown
 assets/og.jpg           the link preview card for WhatsApp / iMessage
-photos/                 drop real photographs here (see photos/README.md)
+photos/                 the four postcard photographs
 ```
 
 ## Notes
 
-- The six postcards and the hero are hand-drawn SVG, so they're a few KB each,
-  stay sharp on any display and can't break. `photos/README.md` explains how to
-  swap in real photographs if you'd rather.
+- The four postcards are photographs in `photos/`; see `photos/README.md` to
+  swap any of them. The hero backdrop is three hand-drawn SVG layers that
+  parallax as you scroll, so it stays sharp at any window size.
 - Fonts come from Google Fonts (Fraunces + Inter) with system fallbacks, so the
   page still reads properly if they don't load.
 - Respects `prefers-reduced-motion`: the parallax, the marquee, the digit rolls
