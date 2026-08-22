@@ -16,12 +16,12 @@ window.TRIP = {
   anchor: '2026-06-01T00:00:00+02:00',
 
   /* Your name, as it appears in the hero and in the crew section. */
-  you: 'You',
+  you: 'Jounes',
 
   /* Used for the "Add to calendar" file. */
   calendar: {
     title: 'Spain — Valencia',
     location: 'Valencia, Comunitat Valenciana, Spain',
-    notes: 'A rented house an hour from Valencia. Oliwia, Artur, Paulina and me.'
+    notes: 'A rented house an hour from Valencia. Jounes, Oliwia, Artur and Paulina.'
   }
 };
