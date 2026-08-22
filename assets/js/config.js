@@ -20,8 +20,8 @@ window.TRIP = {
 
   /* Used for the "Add to calendar" file. */
   calendar: {
-    title: 'Spain — Valencia',
-    location: 'Valencia, Comunitat Valenciana, Spain',
-    notes: 'A rented house an hour from Valencia. Jounes, Oliwia, Artur and Paulina.'
+    title: 'Spain — Dénia',
+    location: 'Dénia, Alicante, Spain',
+    notes: 'A rented house in Dénia, on the Costa Blanca. Jounes, Oliwia, Artur and Paulina.'
   }
 };

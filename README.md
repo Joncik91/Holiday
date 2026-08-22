@@ -1,6 +1,6 @@
 # España 2026
 
-A countdown to two weeks in Spain — a rented house an hour from Valencia,
+A countdown to Spain — a rented house in Dénia, on the Costa Blanca,
 leaving on the 2nd of September 2026.
 
 Plain HTML, CSS and JavaScript. No build step, no dependencies, no tracking.
