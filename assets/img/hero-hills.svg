@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="hh-far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6A5A80"/>
+      <stop offset="1" stop-color="#8A6A7E"/>
+    </linearGradient>
+    <linearGradient id="hh-mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4B4468"/>
+      <stop offset="1" stop-color="#5E4B62"/>
+    </linearGradient>
+    <linearGradient id="hh-near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2E2C48"/>
+      <stop offset="1" stop-color="#1E2138"/>
+    </linearGradient>
+  </defs>
+
+  <!-- far sierra: rounded, hazy -->
+  <g opacity="0.6">
+    <path d="M0 614 L0 552
+             C60 528 110 500 168 502
+             C232 504 268 546 322 548
+             C374 550 404 512 462 508
+             C520 504 552 546 606 552
+             C660 558 690 528 744 530
+             C800 532 830 566 884 566
+             C938 566 972 534 1026 538
+             C1080 542 1108 574 1160 572
+             C1214 570 1244 540 1300 544
+             C1356 548 1386 578 1440 578
+             C1494 578 1540 556 1600 548
+             L1600 614 Z" fill="url(#hh-far)"/>
+  </g>
+
+  <!-- mid ridge -->
+  <g opacity="0.85">
+    <path d="M0 616 L0 580
+             C70 566 128 546 196 552
+             C264 558 306 588 372 588
+             C438 588 480 562 548 564
+             C616 566 654 592 720 594
+             C786 596 830 574 898 576
+             C966 578 1004 598 1072 598
+             C1140 598 1188 580 1256 582
+             C1324 584 1368 600 1436 600
+             C1504 600 1552 590 1600 582
+             L1600 616 Z" fill="url(#hh-mid)"/>
+  </g>
+
+  <!-- right cape with a village -->
+  <g>
+    <path d="M1600 616 L1600 468
+             C1520 482 1444 516 1386 558
+             C1352 582 1326 600 1300 616 Z" fill="url(#hh-near)"/>
+    <g fill="#141728" opacity="0.92">
+      <rect x="1450" y="514" width="26" height="28"/>
+      <rect x="1490" y="498" width="30" height="36"/>
+      <rect x="1538" y="484" width="24" height="32"/>
+      <path d="M1418 542 l0 -46 l6 0 l0 46 Z"/>
+      <path d="M1444 514 l13 -14 l13 14 Z"/>
+      <path d="M1486 498 l19 -18 l19 18 Z"/>
+    </g>
+    <g fill="#FFD9A0" opacity="0.9">
+      <rect x="1457" y="522" width="6" height="7"/>
+      <rect x="1499" y="508" width="6" height="7"/>
+      <rect x="1545" y="492" width="5" height="6"/>
+    </g>
+  </g>
+
+  <!-- left cape -->
+  <path d="M0 616 L0 524
+           C74 540 146 570 202 600
+           C220 608 232 612 242 616 Z" fill="url(#hh-near)"/>
+
+  <!-- a tiny sailboat on the horizon -->
+  <g transform="translate(430 608)" fill="#1B1E33" opacity="0.9">
+    <path d="M-17 0 C-10 9 10 9 17 0 Z"/>
+    <path d="M1 -30 L15 -4 L1 -4 Z"/>
+    <path d="M-2 -4 l0 -26 l3 0 l0 26 Z"/>
+  </g>
+</svg>

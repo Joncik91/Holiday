@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="hs-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D3A63"/>
+      <stop offset="0.18" stop-color="#3E5C86"/>
+      <stop offset="0.38" stop-color="#8A6F92"/>
+      <stop offset="0.55" stop-color="#D07C6C"/>
+      <stop offset="0.7" stop-color="#EE9F62"/>
+      <stop offset="0.82" stop-color="#F7C77E"/>
+      <stop offset="1" stop-color="#FBE0A8"/>
+    </linearGradient>
+    <linearGradient id="hs-sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7A870"/>
+      <stop offset="0.2" stop-color="#B2766F"/>
+      <stop offset="0.55" stop-color="#4E5A78"/>
+      <stop offset="1" stop-color="#1C2A46"/>
+    </linearGradient>
+    <radialGradient id="hs-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFF6DA" stop-opacity="0.9"/>
+      <stop offset="0.4" stop-color="#FFCB80" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#FF9F5E" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="hs-soft"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="hs-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="5"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <clipPath id="hs-water"><rect x="0" y="612" width="1600" height="288"/></clipPath>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#hs-sky)"/>
+  <g opacity="0.45" fill="#FFFFFF">
+    <circle cx="240" cy="90" r="2"/><circle cx="420" cy="52" r="1.6"/><circle cx="700" cy="110" r="1.8"/>
+    <circle cx="1090" cy="66" r="2"/><circle cx="1330" cy="128" r="1.6"/><circle cx="880" cy="40" r="1.5"/>
+  </g>
+  <circle cx="1120" cy="608" r="360" fill="url(#hs-glow)"/>
+  <circle cx="1120" cy="606" r="72" fill="#FFF7DF"/>
+
+  <g opacity="0.5">
+    <path d="M60 210 q200 -34 400 -8 q-190 40 -400 8 Z" fill="#6E5F8C"/>
+    <path d="M1020 150 q240 -36 460 -4 q-220 44 -460 4 Z" fill="#7E6A90"/>
+    <path d="M240 342 q240 -32 460 -2 q-220 38 -460 2 Z" fill="#C4837C"/>
+    <path d="M980 400 q200 -28 380 0 q-190 34 -380 0 Z" fill="#DC9A72"/>
+    <path d="M120 470 q180 -22 340 0 q-170 28 -340 0 Z" fill="#E7AC7E"/>
+  </g>
+
+  <rect x="0" y="612" width="1600" height="288" fill="url(#hs-sea)"/>
+  <g clip-path="url(#hs-water)" filter="url(#hs-soft)">
+    <g fill="#FFEBC0">
+      <ellipse cx="1120" cy="636" rx="54" ry="6" opacity="0.9"/>
+      <ellipse cx="1116" cy="662" rx="86" ry="7" opacity="0.75"/>
+      <ellipse cx="1126" cy="694" rx="118" ry="8" opacity="0.6"/>
+      <ellipse cx="1110" cy="732" rx="96" ry="7" opacity="0.5"/>
+      <ellipse cx="1130" cy="776" rx="150" ry="9" opacity="0.4"/>
+      <ellipse cx="1112" cy="826" rx="120" ry="8" opacity="0.3"/>
+      <ellipse cx="1128" cy="880" rx="180" ry="9" opacity="0.22"/>
+    </g>
+    <g stroke="#FFD8A2" stroke-width="2.5" fill="none" opacity="0.24">
+      <path d="M80 650 q46 -8 92 0 t92 0"/>
+      <path d="M420 690 q52 -9 104 0 t104 0"/>
+      <path d="M120 760 q60 -10 120 0 t120 0"/>
+      <path d="M660 812 q66 -11 132 0 t132 0"/>
+      <path d="M60 866 q72 -12 144 0 t144 0"/>
+    </g>
+  </g>
+  <g opacity="0.2" filter="url(#hs-grain)"><rect width="1600" height="900"/></g>
+</svg>
