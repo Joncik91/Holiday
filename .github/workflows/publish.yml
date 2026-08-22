@@ -1,0 +1,28 @@
+name: Publish to GitHub Pages
+
+# GitHub Pages serves this site from the `gh-pages` branch, so publishing is
+# just a matter of mirroring `main` onto it. Pages then builds and deploys by
+# itself (see the "pages build and deployment" run in the Actions tab).
+#
+# This deliberately avoids actions/deploy-pages: the built-in GITHUB_TOKEN is
+# not permitted to create or reconfigure a Pages site, so the Actions-based
+# flow could never get past `configure-pages`.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror main onto gh-pages
+        run: git push --force origin HEAD:gh-pages

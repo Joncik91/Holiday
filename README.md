@@ -45,16 +45,23 @@ once deployed.)
 
 ### GitHub Pages
 
-One-time setup: **Settings → Pages → Source: GitHub Actions.** The built-in
-`GITHUB_TOKEN` is not permitted to create a Pages site on its own, so that
-switch has to be flipped by hand once.
+Live at <https://joncik91.github.io/Holiday/>, already set up — nothing to
+configure.
 
-After that, every push to `main` runs
-`.github/workflows/deploy-pages.yml`, which publishes the repository root
-as-is to <https://joncik91.github.io/Holiday/>.
+Pages serves the site from the `gh-pages` branch, and
+`.github/workflows/publish.yml` mirrors `main` onto that branch on every
+push. So: commit to `main`, and a minute later the site updates.
 
-Pages on a **private** repository also requires a paid GitHub plan; on the
-free plan the repository has to be public.
+`gh-pages` is generated. Never commit to it directly — anything you put
+there is overwritten by the next push to `main`.
+
+Two things worth knowing if this ever needs rebuilding elsewhere. The
+Actions-based Pages flow (`actions/deploy-pages`) does *not* work here: the
+built-in `GITHUB_TOKEN` cannot create or reconfigure a Pages site, so
+`configure-pages` fails with "Resource not accessible by integration". What
+did work was pushing a branch literally named `gh-pages`, which makes GitHub
+provision the Pages site on its own. And Pages on a **private** repository
+needs a paid plan — on the free plan the repository has to be public.
 
 Both hosts serve the site from the repository root, so nothing needs building
 and there is no output folder to configure.
