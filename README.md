@@ -45,10 +45,14 @@ once deployed.)
 
 ### GitHub Pages
 
-1. **Settings → Pages → Source: GitHub Actions.**
-2. Push to `main`. The workflow in `.github/workflows/deploy-pages.yml`
-   publishes the repository root as-is.
-3. The site lands at `https://<user>.github.io/<repo>/`.
+Already wired up. Every push to `main` runs
+`.github/workflows/deploy-pages.yml`, which turns Pages on if it isn't
+already (`configure-pages` with `enablement: true`) and publishes the
+repository root as-is. The site lands at
+<https://joncik91.github.io/Holiday/>.
+
+Note that Pages on a **private** repository requires a paid GitHub plan.
+On the free plan, make the repository public and it works.
 
 Both hosts serve the site from the repository root, so nothing needs building
 and there is no output folder to configure.
@@ -61,6 +65,7 @@ assets/css/styles.css   design system + layout
 assets/js/config.js     trip settings  ← edit this
 assets/js/main.js       countdown, parallax, reveals, .ics download
 assets/img/*.svg        hero layers and the six postcard scenes
+assets/og.jpg           the link preview card for WhatsApp / iMessage
 photos/                 drop real photographs here (see photos/README.md)
 ```
 
