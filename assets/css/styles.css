@@ -511,18 +511,15 @@ body::after {
 }
 .postcards {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: clamp(18px, 2.4vw, 34px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(20px, 3vw, 40px);
+  /* the source photos are small, so the cards are capped rather than blown up */
+  max-width: 940px;
+  margin-inline: auto;
 }
-.postcard { grid-column: span 12; }
-@media (min-width: 560px) {
-  .postcard { grid-column: span 6; }
-}
-@media (min-width: 860px) {
-  .postcard { grid-column: span 4; }
-  .postcard:nth-child(1) { grid-column: span 12; }
-  .postcard:nth-child(5),
-  .postcard:nth-child(6) { grid-column: span 6; }
+@media (max-width: 640px) {
+  .postcards { grid-template-columns: 1fr; }
 }
 .postcard__frame {
   position: relative;
@@ -530,25 +527,22 @@ body::after {
   border-radius: var(--r-md);
   background: var(--paper-3);
   box-shadow: var(--shadow-md);
-  aspect-ratio: 16 / 10;
-}
-@media (min-width: 860px) {
-  .postcard:nth-child(1) .postcard__frame { aspect-ratio: 12 / 5; }
+  aspect-ratio: 3 / 2;
 }
 .postcard__frame img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transform: scale(1.02);
-  transition: transform 1.1s var(--ease-out), filter .6s var(--ease);
+  transform: scale(1.01);
+  transition: transform 1.1s var(--ease-out);
 }
 .postcard__frame::after {
   content: "";
   position: absolute; inset: 0;
   border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(23,19,14,.10);
+  box-shadow: inset 0 0 0 1px rgba(23,19,14,.12);
   pointer-events: none;
 }
-.postcard:hover .postcard__frame img { transform: scale(1.07); }
+.postcard:hover .postcard__frame img { transform: scale(1.05); }
 
 .postcard figcaption {
   display: grid;
@@ -581,6 +575,7 @@ body::after {
 .section--wishlist { background: var(--ink); color: var(--paper); }
 .section--wishlist .eyebrow { color: var(--gold); }
 .section--wishlist .section__title { color: var(--paper); }
+.section--wishlist .section__lede { color: rgba(251,246,238,.66); }
 
 .wishlist {
   display: grid;

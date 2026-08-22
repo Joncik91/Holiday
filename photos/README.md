@@ -1,24 +1,27 @@
-# Real photos
+# Photos
 
-The postcards on the site are hand-drawn SVG scenes, so nothing can 404 and
-everything stays sharp on any screen. If you'd rather use real photographs:
+The four postcards on the site are real photographs, kept here:
 
-1. Drop your images in this folder, e.g. `photos/albufera.jpg`.
-   Aim for roughly 1600&times;1000 px and keep each one under ~400 KB.
-2. Open `index.html`, find the postcard you want to replace, and swap the
-   `src` (and the `alt` text, which is what screen readers and search engines
-   read):
+| File | Shows | Size |
+| --- | --- | --- |
+| `boardwalk.webp` | The boardwalk down through the dunes to the beach | 788×591 |
+| `old-town.jpg` | A narrow old town street with a bell tower at the end | 720×480 |
+| `bay.jpg` | Rooftops above a turquoise bay | 547×365 |
+| `castle.jpg` | A walled hilltop castle over a green valley | 631×316 |
 
-   ```html
-   <img src="photos/albufera.jpg" width="1600" height="1000" loading="lazy" decoding="async"
-        alt="Sunset over the Albufera lagoon">
-   ```
+## Swapping one out
 
-3. The frame crops to a fixed aspect ratio with `object-fit: cover`, so keep
-   the subject near the middle of the frame.
+Drop the new file in here, then point the matching `<img>` in `index.html`
+at it and update its `alt` text. Search `index.html` for `photos/` — there
+are four of them, each with a `<figcaption>` you can reword.
 
-The hero background is a stack of three layers in `assets/img/`
-(`hero-sky.svg`, `hero-hills.svg`, `hero-fore.svg`) that move at different
-speeds as you scroll. To use a photo there instead, point
-`.hero__layer--sky` in `assets/css/styles.css` at your image and delete the
-other two layers from `index.html`.
+## A note on size
+
+These are small files (roughly 550–790 px wide). The gallery is capped at
+940 px and each card is around 440 px so they stay sharp; on a high-density
+screen they are being stretched a little past their native size.
+
+If you have the originals off a phone or camera, replace them and everything
+gets crisper for free — no code change beyond the filename. Keep replacements
+around 1600 px on the long edge and under ~400 KB, and the layout will take
+them as they are.
