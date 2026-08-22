@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="A narrow old town street in Spain with ochre walls, iron balconies and hanging laundry in warm afternoon light">
+  <defs>
+    <linearGradient id="ot-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5FA8CE"/>
+      <stop offset="0.7" stop-color="#A8D2E2"/>
+      <stop offset="1" stop-color="#E7EADF"/>
+    </linearGradient>
+    <linearGradient id="ot-wallL" x1="0" y1="0" x2="1" y2="0.3">
+      <stop offset="0" stop-color="#7E4E33"/>
+      <stop offset="0.55" stop-color="#A96F45"/>
+      <stop offset="1" stop-color="#CE915C"/>
+    </linearGradient>
+    <linearGradient id="ot-wallR" x1="1" y1="0" x2="0" y2="0.3">
+      <stop offset="0" stop-color="#F6DEB4"/>
+      <stop offset="0.45" stop-color="#EAC58F"/>
+      <stop offset="1" stop-color="#C99C68"/>
+    </linearGradient>
+    <linearGradient id="ot-ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D0B692"/>
+      <stop offset="0.4" stop-color="#AC9174"/>
+      <stop offset="1" stop-color="#7C6450"/>
+    </linearGradient>
+    <linearGradient id="ot-light" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#FFEBC0" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#FFEBC0" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="ot-tile" width="72" height="72" patternUnits="userSpaceOnUse">
+      <rect width="72" height="72" fill="#F3ECE0"/>
+      <path d="M36 7 L65 36 L36 65 L7 36 Z" fill="#2C6B8F"/>
+      <circle cx="36" cy="36" r="10" fill="#F3ECE0"/>
+      <path d="M0 0 L13 0 L0 13 Z M72 0 L59 0 L72 13 Z M0 72 L13 72 L0 59 Z M72 72 L59 72 L72 59 Z" fill="#2C6B8F"/>
+    </pattern>
+    <filter id="ot-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.88" numOctaves="3" seed="23"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="ot-soft"><feGaussianBlur stdDeviation="16"/></filter>
+    <g id="ot-balcony">
+      <rect x="-6" y="0" width="120" height="9" rx="3" fill="#2E3A3E"/>
+      <g stroke="#2E3A3E" stroke-width="4.5">
+        <path d="M2 9 v46"/><path d="M20 9 v46"/><path d="M38 9 v46"/><path d="M56 9 v46"/>
+        <path d="M74 9 v46"/><path d="M92 9 v46"/><path d="M106 9 v46"/>
+        <path d="M-2 53 h112"/>
+      </g>
+      <rect x="-6" y="53" width="120" height="8" rx="3" fill="#2E3A3E"/>
+    </g>
+    <g id="ot-pot">
+      <path d="M-15 0 h30 l-5 24 h-20 Z" fill="#B4552F"/>
+      <rect x="-18" y="-6" width="36" height="8" rx="3" fill="#C4643C"/>
+      <g fill="#3F6B3A">
+        <circle cx="-9" cy="-14" r="11"/><circle cx="8" cy="-16" r="12"/><circle cx="0" cy="-25" r="10"/>
+      </g>
+      <g fill="#D8455C"><circle cx="-11" cy="-23" r="4.5"/><circle cx="11" cy="-23" r="4"/><circle cx="1" cy="-33" r="4"/></g>
+    </g>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#ot-sky)"/>
+
+  <!-- the sunlit square at the end of the street -->
+  <rect x="630" y="300" width="340" height="500" fill="#F8E7C4"/>
+  <g opacity="0.55" fill="#DCC094">
+    <rect x="645" y="352" width="104" height="200"/>
+    <rect x="852" y="372" width="104" height="180"/>
+    <path d="M645 352 h104 v14 h-104 Z"/>
+  </g>
+  <g fill="#3E6B3A" opacity="0.8">
+    <rect x="794" y="628" width="12" height="86" fill="#5C4028"/>
+    <circle cx="800" cy="596" r="50"/><circle cx="840" cy="626" r="40"/><circle cx="762" cy="630" r="37"/>
+  </g>
+  <rect x="630" y="782" width="340" height="220" fill="#E4CDA4"/>
+
+  <!-- left building -->
+  <path d="M0 0 L640 210 L640 1000 L0 1000 Z" fill="url(#ot-wallL)"/>
+  <path d="M0 0 L640 210 L640 254 L0 62 Z" fill="#6E4229" opacity="0.55"/>
+  <g fill="#2A1D16" opacity="0.72">
+    <path d="M70 330 L180 380 L180 520 L70 470 Z"/>
+    <path d="M270 402 L380 452 L380 592 L270 542 Z"/>
+    <path d="M470 474 L580 524 L580 664 L470 614 Z"/>
+    <path d="M70 620 L180 668 L180 808 L70 760 Z"/>
+    <path d="M270 692 L380 740 L380 880 L270 832 Z"/>
+  </g>
+  <g fill="#E8CFA6" opacity="0.32">
+    <path d="M70 330 L180 380 L180 400 L70 350 Z"/>
+    <path d="M270 402 L380 452 L380 472 L270 422 Z"/>
+    <path d="M470 474 L580 524 L580 544 L470 494 Z"/>
+  </g>
+  <g fill="#2E3A3E">
+    <path d="M50 500 L200 566 L200 578 L50 512 Z"/>
+    <path d="M250 572 L400 638 L400 650 L250 584 Z"/>
+    <path d="M450 644 L600 710 L600 722 L450 656 Z"/>
+  </g>
+  <!-- blue doorway -->
+  <path d="M470 800 L590 852 L590 1000 L470 1000 Z" fill="#1E5C74"/>
+  <path d="M470 800 L590 852 L590 872 L470 820 Z" fill="#123F52"/>
+  <path d="M524 828 L530 830 L530 1000 L524 1000 Z" fill="#0E3243" opacity="0.7"/>
+
+  <!-- right building -->
+  <path d="M1600 0 L960 210 L960 1000 L1600 1000 Z" fill="url(#ot-wallR)"/>
+  <path d="M1600 0 L960 210 L960 254 L1600 62 Z" fill="#B08355" opacity="0.35"/>
+  <g fill="#3B2A1E" opacity="0.66">
+    <path d="M1530 330 L1420 380 L1420 520 L1530 470 Z"/>
+    <path d="M1330 402 L1220 452 L1220 592 L1330 542 Z"/>
+    <path d="M1130 474 L1020 524 L1020 664 L1130 614 Z"/>
+    <path d="M1530 620 L1420 668 L1420 808 L1530 760 Z"/>
+    <path d="M1330 692 L1220 740 L1220 880 L1330 832 Z"/>
+  </g>
+  <g fill="#FFF3D6" opacity="0.42">
+    <path d="M1530 330 L1420 380 L1420 402 L1530 352 Z"/>
+    <path d="M1330 402 L1220 452 L1220 474 L1330 424 Z"/>
+    <path d="M1130 474 L1020 524 L1020 546 L1130 496 Z"/>
+  </g>
+  <!-- azulejo skirting -->
+  <path d="M960 700 L1600 926 L1600 1000 L960 774 Z" fill="url(#ot-tile)" opacity="0.92"/>
+  <path d="M960 700 L1600 926 L1600 938 L960 712 Z" fill="#2C6B8F"/>
+
+  <!-- balconies + pots -->
+  <g transform="translate(1240 574) rotate(-19)"><use href="#ot-balcony"/></g>
+  <g transform="translate(1440 506) rotate(-19)"><use href="#ot-balcony"/></g>
+  <g transform="translate(120 574) rotate(19)"><use href="#ot-balcony"/></g>
+  <g transform="translate(322 646) rotate(19)"><use href="#ot-balcony"/></g>
+  <use href="#ot-pot" transform="translate(1274 570) rotate(-19)"/>
+  <use href="#ot-pot" transform="translate(1332 550) rotate(-19) scale(0.9)"/>
+  <use href="#ot-pot" transform="translate(1486 504) rotate(-19) scale(0.95)"/>
+  <use href="#ot-pot" transform="translate(172 586) rotate(19) scale(0.92)"/>
+  <use href="#ot-pot" transform="translate(370 658) rotate(19) scale(0.88)"/>
+
+  <!-- laundry across the street -->
+  <g>
+    <path d="M600 264 C740 320 860 320 1000 264" stroke="#6B5B4A" stroke-width="4" fill="none"/>
+    <g>
+      <rect x="646" y="300" width="66" height="92" rx="4" fill="#F6F2E9" transform="rotate(2 679 346)"/>
+      <rect x="736" y="312" width="56" height="80" rx="4" fill="#C2452E" transform="rotate(-1 764 352)" opacity="0.92"/>
+      <rect x="818" y="314" width="74" height="98" rx="4" fill="#EDE6D6" transform="rotate(1 855 363)"/>
+      <rect x="912" y="300" width="58" height="82" rx="4" fill="#2C6B8F" transform="rotate(-2 941 341)" opacity="0.88"/>
+    </g>
+    <path d="M614 168 C752 222 856 222 992 170" stroke="#6B5B4A" stroke-width="3" fill="none" opacity="0.75"/>
+    <g opacity="0.92">
+      <rect x="680" y="200" width="50" height="66" rx="4" fill="#EFE9DA" transform="rotate(2 705 233)"/>
+      <rect x="786" y="212" width="44" height="58" rx="4" fill="#DFC9A4" transform="rotate(-2 808 241)"/>
+      <rect x="880" y="202" width="46" height="62" rx="4" fill="#E0A458" transform="rotate(1 903 233)"/>
+    </g>
+  </g>
+
+  <!-- street lamp -->
+  <g transform="translate(1046 452)">
+    <path d="M0 0 h-58" stroke="#2E3A3E" stroke-width="7"/>
+    <path d="M0 -6 v34" stroke="#2E3A3E" stroke-width="9"/>
+    <path d="M-58 0 l-18 30 h36 Z" fill="#2E3A3E"/>
+    <path d="M-55 6 l-12 20 h24 Z" fill="#FFE6A8"/>
+    <circle cx="-58" cy="34" r="4" fill="#2E3A3E"/>
+  </g>
+
+  <!-- ground -->
+  <path d="M0 1000 L640 770 L960 770 L1600 1000 Z" fill="url(#ot-ground)"/>
+  <g opacity="0.26" stroke="#5F4B39" stroke-width="3" fill="none">
+    <path d="M660 800 L560 1000"/><path d="M730 800 L700 1000"/><path d="M800 800 L800 1000"/>
+    <path d="M870 800 L900 1000"/><path d="M940 800 L1040 1000"/>
+    <path d="M400 900 H1200"/><path d="M240 960 H1360"/><path d="M560 840 H1040"/>
+  </g>
+  <path d="M630 782 L970 782 L1180 1000 L420 1000 Z" fill="url(#ot-light)" opacity="0.8" filter="url(#ot-soft)"/>
+
+  <!-- cafe table on the sunny side -->
+  <g transform="translate(1180 884)">
+    <ellipse cx="0" cy="84" rx="86" ry="15" fill="#4B3A2C" opacity="0.32"/>
+    <rect x="-8" y="-10" width="16" height="88" fill="#3A4A4E"/>
+    <ellipse cx="0" cy="-14" rx="92" ry="25" fill="#EFE5D2"/>
+    <ellipse cx="0" cy="-20" rx="92" ry="25" fill="#FFFAF0"/>
+    <g><ellipse cx="-30" cy="-30" rx="17" ry="7" fill="#E9DFCB"/><path d="M-43 -34 a13 6 0 0 1 26 0 l-2 -11 a11 5 0 0 0 -22 0 Z" fill="#C97C3A"/></g>
+    <g><ellipse cx="34" cy="-26" rx="13" ry="6" fill="#E9DFCB"/><rect x="26" y="-50" width="15" height="25" rx="3" fill="#F6E7B0"/></g>
+  </g>
+
+  <g opacity="0.18" filter="url(#ot-grain)"><rect width="1600" height="1000"/></g>
+</svg>

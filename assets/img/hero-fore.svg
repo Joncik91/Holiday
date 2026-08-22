@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="hf-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0C0A16" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0C0A16" stop-opacity="0.34"/>
+    </linearGradient>
+    <linearGradient id="hf-trunk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1A1526"/>
+      <stop offset="0.65" stop-color="#241C30"/>
+      <stop offset="1" stop-color="#120E1C"/>
+    </linearGradient>
+    <!-- one frond, growing to the right from the crown -->
+    <path id="hf-frond" d="M0 0
+      C58 -26 132 -40 214 -34
+      C186 -22 150 -14 118 -10
+      C158 -4 196 6 224 22
+      C176 16 128 12 92 14
+      C120 22 148 34 168 50
+      C126 34 82 22 44 16
+      C26 12 10 8 0 6 Z" />
+    <g id="hf-palm">
+      <!-- trunk -->
+      <path d="M0 0 C-14 -120 -22 -250 -8 -368 C-4 -404 4 -430 14 -448
+               L44 -440 C32 -418 24 -392 20 -360 C8 -246 12 -118 26 0 Z" fill="url(#hf-trunk)"/>
+      <g fill="#171225">
+        <path d="M-6 -60 l30 4 l-2 12 l-30 -4 Z"/>
+        <path d="M-10 -140 l30 4 l-2 12 l-30 -4 Z"/>
+        <path d="M-12 -226 l30 3 l-1 12 l-30 -3 Z"/>
+        <path d="M-8 -310 l30 3 l-1 12 l-30 -3 Z"/>
+      </g>
+      <!-- crown -->
+      <g fill="#150F22" transform="translate(24 -450)">
+        <use href="#hf-frond" transform="rotate(-8)"/>
+        <use href="#hf-frond" transform="rotate(26) scale(0.96)"/>
+        <use href="#hf-frond" transform="rotate(62) scale(0.86)"/>
+        <use href="#hf-frond" transform="rotate(-42) scale(0.94)"/>
+        <use href="#hf-frond" transform="rotate(-78) scale(0.8)"/>
+        <use href="#hf-frond" transform="scale(-1 1) rotate(-14)"/>
+        <use href="#hf-frond" transform="scale(-1 1) rotate(22) scale(0.94)"/>
+        <use href="#hf-frond" transform="scale(-1 1) rotate(58) scale(0.84)"/>
+        <use href="#hf-frond" transform="scale(-1 1) rotate(-50) scale(0.9)"/>
+        <ellipse cx="0" cy="4" rx="20" ry="14"/>
+        <!-- dates -->
+        <g fill="#1C1529"><circle cx="14" cy="26" r="7"/><circle cx="-6" cy="34" r="6"/><circle cx="26" cy="42" r="5"/></g>
+      </g>
+    </g>
+  </defs>
+
+  <!-- back palm -->
+  <g opacity="0.72" transform="translate(1544 918) scale(0.72)">
+    <use href="#hf-palm"/>
+  </g>
+  <!-- front palm -->
+  <g transform="translate(1318 930) scale(1.02) rotate(-3)">
+    <use href="#hf-palm"/>
+  </g>
+
+  <!-- a low agave on the left edge -->
+  <g fill="#150F22" opacity="0.9" transform="translate(-10 906)">
+    <g id="hf-agave">
+      <path d="M0 0 C10 -70 26 -122 46 -158 C40 -110 34 -60 30 0 Z"/>
+      <path d="M0 0 C30 -58 66 -100 108 -126 C74 -88 46 -46 26 2 Z"/>
+      <path d="M0 0 C46 -34 100 -54 156 -60 C104 -40 56 -18 22 6 Z"/>
+      <path d="M0 0 C-8 -64 -12 -116 -8 -156 C-2 -110 6 -58 12 0 Z"/>
+    </g>
+    <use href="#hf-agave" transform="translate(104 8) scale(0.72)"/>
+  </g>
+
+  <!-- soft ground vignette so the type has something to sit on -->
+  <rect x="0" y="640" width="1600" height="260" fill="url(#hf-fade)"/>
+</svg>
