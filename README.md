@@ -45,14 +45,16 @@ once deployed.)
 
 ### GitHub Pages
 
-Already wired up. Every push to `main` runs
-`.github/workflows/deploy-pages.yml`, which turns Pages on if it isn't
-already (`configure-pages` with `enablement: true`) and publishes the
-repository root as-is. The site lands at
-<https://joncik91.github.io/Holiday/>.
+One-time setup: **Settings → Pages → Source: GitHub Actions.** The built-in
+`GITHUB_TOKEN` is not permitted to create a Pages site on its own, so that
+switch has to be flipped by hand once.
 
-Note that Pages on a **private** repository requires a paid GitHub plan.
-On the free plan, make the repository public and it works.
+After that, every push to `main` runs
+`.github/workflows/deploy-pages.yml`, which publishes the repository root
+as-is to <https://joncik91.github.io/Holiday/>.
+
+Pages on a **private** repository also requires a paid GitHub plan; on the
+free plan the repository has to be public.
 
 Both hosts serve the site from the repository root, so nothing needs building
 and there is no output folder to configure.
