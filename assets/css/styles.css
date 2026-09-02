@@ -44,6 +44,7 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body, h1, h2, h3, p, figure, figcaption, ol, ul, li { margin: 0; padding: 0; }
 ol, ul { list-style: none; }
 img, svg { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
 button { font: inherit; color: inherit; }
 a { color: inherit; }
 
@@ -275,6 +276,14 @@ body::after {
 .hero__lede strong { font-weight: 600; color: #fff; }
 
 /* ---------- countdown ---------- */
+.count-caption {
+  font-size: clamp(10px, .26vw + 9px, 12px);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(253,247,236,.62);
+  margin-bottom: 12px;
+}
+
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

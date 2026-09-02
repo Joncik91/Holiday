@@ -18,10 +18,27 @@ Everything you're likely to change lives in **`assets/js/config.js`**:
 | `returnDate` | When you fly home. Leave it `null` until it's booked — the site just hides the "nights" line. |
 | `anchor` | Where the progress bar starts filling from. |
 | `you` | Your name, as it appears in the hero and the crew card. |
+| `place` | Where we are, used by the running "Day 3 in …" counter. |
 | `calendar` | Title, location and notes for the "Add to calendar" download. |
 
 Copy, section headings and the six postcard captions are written directly in
 `index.html` — search for the words you want to change.
+
+## The three phases
+
+The page reads the clock and picks one of three states by itself, so it
+never needs editing mid-trip:
+
+- **before** — counts down to `departure`, "Nos vamos a España".
+- **during** — counts *up* from `departure`, "Ya estamos en España", and the
+  header pill becomes "Day 3". With a `returnDate` set it also shows
+  "Day 3 of 12, 9 to go"; without one the progress bar hides itself.
+- **after** — past `returnDate`, "Estuvimos en España", frozen on the length
+  of the trip. Only reachable once `returnDate` is filled in.
+
+Copy for each state lives in `index.html` on `data-when="before|during|after"`
+elements; the ones that do not apply are removed at load. If the page is left
+open across a boundary it reloads itself so the wording keeps up.
 
 ## Running it locally
 

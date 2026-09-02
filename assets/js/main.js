@@ -15,6 +15,29 @@
   var pad = function (n) { return (n < 10 ? '0' : '') + n; };
 
   /* ---------------------------------------------------------------
+     Which part of the trip are we in?
+     before  — still waiting            during — we are there
+     after   — home again (needs a returnDate to ever be reached)
+     --------------------------------------------------------------- */
+  function phaseAt(now) {
+    if (now < DEPARTURE.getTime()) return 'before';
+    if (!RETURN || now < RETURN.getTime()) return 'during';
+    return 'after';
+  }
+
+  var phase = phaseAt(Date.now());
+  document.documentElement.setAttribute('data-phase', phase);
+
+  $$('[data-when]').forEach(function (el) {
+    var when = (el.getAttribute('data-when') || '').split(/\s+/);
+    if (when.indexOf(phase) === -1) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    } else {
+      el.removeAttribute('hidden');
+    }
+  });
+
+  /* ---------------------------------------------------------------
      Names from config
      --------------------------------------------------------------- */
   (function names() {
@@ -108,18 +131,21 @@
   var progressEl = $('[data-progress-text]');
   var outroSub   = $('[data-outro-sub]');
   var lastMinuteAnnounced = -1;
-  var arrived = false;
+  var PLACE = (CFG.place || 'Spain');
 
   function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
 
   function tick() {
     var now = Date.now();
-    var ms = DEPARTURE.getTime() - now;
 
-    if (ms <= 0) {
-      if (!arrived) { land(); arrived = true; }
-      return;
-    }
+    // crossing a boundary while the page sits open: re-render with the right copy
+    if (phaseAt(now) !== phase) { window.location.reload(); return; }
+
+    var ms;
+    if (phase === 'before')      ms = DEPARTURE.getTime() - now;
+    else if (phase === 'during') ms = now - DEPARTURE.getTime();
+    else                         ms = RETURN.getTime() - DEPARTURE.getTime();
+    if (ms < 0) ms = 0;
 
     var total = Math.floor(ms / 1000);
     var days = Math.floor(total / 86400);
@@ -132,51 +158,78 @@
     if (odos.minutes) odos.minutes.set(pad(minutes));
     if (odos.seconds) odos.seconds.set(pad(seconds));
 
-    var mini = days + 'd ' + pad(hours) + 'h ' + pad(minutes) + 'm';
+    var dayNo = days + 1;               // the day you land is day one
+    var mini, big, sr;
+
+    if (phase === 'before') {
+      mini = days + 'd ' + pad(hours) + 'h ' + pad(minutes) + 'm';
+      big = days > 0
+        ? plural(days, 'day', 'days') + ', ' + plural(hours, 'hour', 'hours')
+        : plural(hours, 'hour', 'hours') + ', ' + plural(minutes, 'minute', 'minutes');
+      sr = big + ' until we leave for ' + PLACE + '.';
+    } else if (phase === 'during') {
+      mini = 'Day ' + dayNo;
+      big = 'Day ' + dayNo + ' in ' + PLACE;
+      sr = 'Day ' + dayNo + ' in ' + PLACE + '.';
+    } else {
+      mini = 'Ya está';
+      big = plural(days, 'day', 'days') + ' in ' + PLACE;
+      sr = 'The trip is over.';
+    }
+
     miniEls.forEach(function (el) { el.textContent = mini; });
-
-    var big = days > 0
-      ? plural(days, 'day', 'days') + ', ' + plural(hours, 'hour', 'hours')
-      : plural(hours, 'hour', 'hours') + ', ' + plural(minutes, 'minute', 'minutes');
     miniBigEls.forEach(function (el) { el.textContent = big; });
-
     if (srEl && minutes !== lastMinuteAnnounced) {
       lastMinuteAnnounced = minutes;
-      srEl.textContent = big + ' until we leave for Spain.';
+      srEl.textContent = sr;
     }
 
-    // progress
-    var span = DEPARTURE.getTime() - ANCHOR.getTime();
-    var pct = span > 0 ? Math.min(100, Math.max(0, (now - ANCHOR.getTime()) / span * 100)) : 0;
-    if (fillEl) fillEl.style.width = pct.toFixed(2) + '%';
-    if (progressEl) {
-      progressEl.textContent = pct < 1
-        ? 'The wait has barely begun.'
-        : Math.round(pct) + '% of the wait is behind us.';
-    }
+    progress(now, dayNo, days);
   }
 
-  function land() {
-    ['days', 'hours', 'minutes', 'seconds'].forEach(function (k) {
-      if (odos[k]) odos[k].set('00');
-    });
-    if (fillEl) fillEl.style.width = '100%';
-    if (progressEl) progressEl.textContent = 'Vamos.';
-    miniEls.forEach(function (el) { el.textContent = 'Estamos allí'; });
-    miniBigEls.forEach(function (el) { el.textContent = '¡Estamos en España!'; });
-    if (outroSub) outroSub.textContent = 'Hope the water is warm.';
-    if (srEl) srEl.textContent = 'We have left for Spain.';
+  function progress(now, dayNo, daysElapsed) {
+    var pct, text;
+
+    if (phase === 'before') {
+      var span = DEPARTURE.getTime() - ANCHOR.getTime();
+      pct = span > 0 ? (now - ANCHOR.getTime()) / span * 100 : 0;
+      text = pct < 1 ? 'The wait has barely begun.'
+                     : Math.round(pct) + '% of the wait is behind us.';
+    } else if (phase === 'during') {
+      if (RETURN) {
+        var trip = RETURN.getTime() - DEPARTURE.getTime();
+        pct = trip > 0 ? (now - DEPARTURE.getTime()) / trip * 100 : 0;
+        var totalDays = Math.round(trip / 86400000);
+        text = 'Day ' + dayNo + ' of ' + totalDays + '. ' +
+               Math.max(0, totalDays - daysElapsed) + ' to go.';
+      } else {
+        pct = 0;
+        // no return date configured, so there is no bar to fill
+        text = 'Day ' + dayNo + '. This site does not know when we fly home yet.';
+      }
+    } else {
+      pct = 100;
+      text = 'Se acabó.';
+    }
+
+    // an empty track reads as broken, so hide it when there is nothing to measure
+    var track = fillEl && fillEl.parentNode;
+    if (track) track.hidden = (phase === 'during' && !RETURN);
+
+    pct = Math.min(100, Math.max(0, pct));
+    if (fillEl) fillEl.style.width = pct.toFixed(2) + '%';
+    if (progressEl) progressEl.textContent = text;
+  }
+
+  if (outroSub) {
+    outroSub.textContent =
+      phase === 'before' ? 'until we leave for ' + PLACE
+      : phase === 'during' ? 'and in no hurry whatsoever'
+      : 'and already missed';
   }
 
   tick();
   window.setInterval(tick, 1000);
-
-  /* nights, if the return leg is known */
-  (function nights() {
-    if (!RETURN || !outroSub) return;
-    var n = Math.round((RETURN.getTime() - DEPARTURE.getTime()) / 86400000);
-    if (n > 0) outroSub.textContent = 'until ' + plural(n, 'night', 'nights') + ' in the sun';
-  })();
 
   /* ---------------------------------------------------------------
      Add to calendar (.ics)

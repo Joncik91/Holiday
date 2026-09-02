@@ -18,6 +18,9 @@ window.TRIP = {
   /* Your name, as it appears in the hero and in the crew section. */
   you: 'Jounes',
 
+  /* Where we are. Used in the running "Day 3 in ..." counter. */
+  place: 'Dénia',
+
   /* Used for the "Add to calendar" file. */
   calendar: {
     title: 'Spain — Dénia',
