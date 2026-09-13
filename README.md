@@ -54,21 +54,22 @@ once deployed.)
 ## Deploying
 
 **The site is offline.** The trip happened, so it was taken down on
-13 September 2026: the `gh-pages` branch was deleted and the publishing
-workflow removed. Nothing else was touched — the page, the photographs and
-the full history are all still here.
+13 September 2026: the publishing workflow was removed and `gh-pages` — the
+branch Pages serves — was emptied down to a single `.nojekyll`, so the URL
+now returns 404. Nothing else was touched; the page, the photographs and the
+full history are all still here on `main`.
 
 ### Putting it back
 
 ```bash
-git push origin main:gh-pages
+git push --force origin main:gh-pages
 ```
 
-That one command republishes it at <https://joncik91.github.io/Holiday/>.
-GitHub Pages builds from the `gh-pages` branch, so recreating the branch is
-all it takes; there is no setting to flip. If you want it to keep updating
-on every push again, restore `.github/workflows/publish.yml` from this
-commit's parent.
+That republishes it at <https://joncik91.github.io/Holiday/>. Pages builds
+straight from `gh-pages`, so restoring the branch is all it takes — there is
+no setting to flip. The `--force` is needed because the emptying commit made
+`gh-pages` diverge from `main`. To have it update automatically on every push
+again, restore `.github/workflows/publish.yml` from the history.
 
 Worth knowing if it ever needs rebuilding elsewhere: the Actions-based Pages
 flow (`actions/deploy-pages`) does **not** work on this repo — the built-in
