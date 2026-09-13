@@ -53,35 +53,36 @@ once deployed.)
 
 ## Deploying
 
+**The site is offline.** The trip happened, so it was taken down on
+13 September 2026: the `gh-pages` branch was deleted and the publishing
+workflow removed. Nothing else was touched — the page, the photographs and
+the full history are all still here.
+
+### Putting it back
+
+```bash
+git push origin main:gh-pages
+```
+
+That one command republishes it at <https://joncik91.github.io/Holiday/>.
+GitHub Pages builds from the `gh-pages` branch, so recreating the branch is
+all it takes; there is no setting to flip. If you want it to keep updating
+on every push again, restore `.github/workflows/publish.yml` from this
+commit's parent.
+
+Worth knowing if it ever needs rebuilding elsewhere: the Actions-based Pages
+flow (`actions/deploy-pages`) does **not** work on this repo — the built-in
+`GITHUB_TOKEN` cannot create or reconfigure a Pages site, so `configure-pages`
+fails with "Resource not accessible by integration". Pushing a branch named
+`gh-pages` is what made GitHub provision the site in the first place. Pages
+on a private repository also needs a paid plan; on the free plan the
+repository has to be public.
+
 ### Vercel
 
-1. Import the repository at [vercel.com/new](https://vercel.com/new).
-2. Framework preset: **Other**. No build command, no output directory —
-   it's a static site and `vercel.json` already sets the cache headers.
-3. Deploy. Every push to `main` republishes.
-
-### GitHub Pages
-
-Live at <https://joncik91.github.io/Holiday/>, already set up — nothing to
-configure.
-
-Pages serves the site from the `gh-pages` branch, and
-`.github/workflows/publish.yml` mirrors `main` onto that branch on every
-push. So: commit to `main`, and a minute later the site updates.
-
-`gh-pages` is generated. Never commit to it directly — anything you put
-there is overwritten by the next push to `main`.
-
-Two things worth knowing if this ever needs rebuilding elsewhere. The
-Actions-based Pages flow (`actions/deploy-pages`) does *not* work here: the
-built-in `GITHUB_TOKEN` cannot create or reconfigure a Pages site, so
-`configure-pages` fails with "Resource not accessible by integration". What
-did work was pushing a branch literally named `gh-pages`, which makes GitHub
-provision the Pages site on its own. And Pages on a **private** repository
-needs a paid plan — on the free plan the repository has to be public.
-
-Both hosts serve the site from the repository root, so nothing needs building
-and there is no output folder to configure.
+`vercel.json` is still here and unused. Import the repo at
+[vercel.com/new](https://vercel.com/new), preset **Other**, no build command,
+and it will serve the same static site.
 
 ## What's in here
 
